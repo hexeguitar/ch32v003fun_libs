@@ -7,11 +7,7 @@
  * @version 0.1
  * @date 2023-07-29
  * 
- * REQUIRES utils.h file! Otherwise add
- * 
- * int _write(int fd, const char *buf, int size);
- * at the top of your code to gain access to the internal _write function
- * 
+ * REQUIRES utils.h file!
  */
 
 #include <stdint.h>
