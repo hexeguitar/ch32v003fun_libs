@@ -84,8 +84,8 @@
 #if defined(UART_PINS_TXPD0_RXPD1)
 	#define UART_PORT_RCC	RCC_APB2Periph_GPIOD
 	#define UART_PORT		GPIOD 
-	#define UART_PIN_SCL 	0
-	#define UART_PIN_SDA 	1
+	#define UART_PIN_TX 	0
+	#define UART_PIN_RX 	1
 	#define UART_AFIO_PCFR1	(1<<2)							//remap 01
 #elif defined (UART_PINS_TXPC0_RXPC1)
 	#define UART_PORT_RCC	RCC_APB2Periph_GPIOC
