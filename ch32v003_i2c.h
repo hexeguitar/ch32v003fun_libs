@@ -86,7 +86,7 @@
 	#define I2C_PORT		GPIOC 
 	#define I2C_PIN_SCL 	2
 	#define I2C_PIN_SDA 	1
-	#define I2C_AFIO_PCFR1	I2C_AFIO_PCFR1_RESET_MASK		//default 00
+	#define I2C_AFIO_PCFR1	0x00		//default 00
 #endif
 
 // use default 100kHz if nothing else is declared
