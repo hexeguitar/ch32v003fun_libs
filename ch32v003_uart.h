@@ -144,7 +144,7 @@ void UART_init();			// baudrate set in funconf.h using FUNCONF_UART_PRINTF_BAUD
 #endif
 // --------------------------------------------------------
 /**
- * @brief Initialoze USART1 with predefined settings
+ * @brief Initialize USART1 with predefined settings
  */
 void UART_init()
 {
@@ -215,7 +215,7 @@ void UART_putc(uint8_t data)
 }
 // --------------------------------------------------------
 /**
- * @brief write buld data
+ * @brief write bulk data
  * 
  * @param buf pointer to the source buffer
  * @param size how many bytes to send
