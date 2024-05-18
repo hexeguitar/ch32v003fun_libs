@@ -29,7 +29,7 @@
  *    #define UART_PINS_TXPC0_RXPC1 or
  *    #define UART_PINS_TXPD6_RXPD5 - this is the TXRX swap setting
  * 
- * 3. X or RX can be disabled separately, for TX only UART add the following define
+ * 3. TX or RX can be disabled separately, for TX only UART add the following define
  *    #define UART_MODE_TX
  *    for RX only: #define UART_MODE_RX
  *    Default setting is both, TX and RX enabled
@@ -38,7 +38,8 @@
  *    #define CH32V003_UART_IMPLEMENTATION
  * 5. Then include the header file
  *    #include "ch32v003_uart.h"
- * 
+ * 6. Initialize the UART:
+ * 		UART_init();
  * 	To send a byte:
  * 		UART_putc(dataByte);
  * 	To print something:
@@ -223,12 +224,13 @@ void UART_putc(uint8_t data)
  */
 int UART_write(const char *buf, int size)
 {
+	int rem = size;
 	for(int i = 0; i < size; i++)
 	{
 		UART_putc(*buf++);
-	    size--;
+	    rem--;
 	}
-	return size;
+	return rem;
 }
 // --------------------------------------------------------
 /**
@@ -236,8 +238,7 @@ int UART_write(const char *buf, int size)
  */
 static int UART_puts(char *s, int len, void *buf)
 {
-	UART_write(s, len);
-	return len;
+	return UART_write(s, len);
 }
 // --------------------------------------------------------
 /**

@@ -12,13 +12,19 @@ typedef int (*puts_ft)(char* s, int len, void* buf);
 int mini_snprintf(char* buffer, unsigned int buffer_len, const char *fmt, ...);
 
 int _write(int fd, const char *buf, int size);
-
+// ----------------------------------------------------------
 static inline int32_t abs_i32(int32_t x)  __attribute__((always_inline,unused));
 static inline int32_t abs_i32(int32_t x)
 {
 	return (x < 0)? -x : x;
 }
 
+static inline int32_t clamp_i(int32_t Value, int32_t Min, int32_t Max)  __attribute__((always_inline,unused));
+static inline int32_t clamp_i(int32_t Value, int32_t Min, int32_t Max)
+{
+	return (Value < Min)? Min : (Value > Max)? Max : Value;
+}
+// ----------------------------------------------------------
 /**
  * @brief Fast multiply for ch32v003, 
  * 			author: CNLohr
@@ -41,7 +47,7 @@ static inline uint32_t FastMultiply( uint32_t big_num, uint32_t small_num )
 }
 
 #if defined (UTILS_IMPLEMETATION)
-
+// ----------------------------------------------------------
 /**
  * @brief print a binary representation of max 32bit value
  * 
@@ -80,10 +86,10 @@ void printBin(uint32_t v, uint8_t num_places, puts_ft puts_cb)
 			else		_write(0,"_", 2);
         }
     }
-	if (puts_cb) 	puts_cb("\r\n", 5, NULL);
-			else		_write(0,"\r\n", 5);
+	if (puts_cb) 	puts_cb("\r\n", 3, NULL);
+			else		_write(0,"\r\n", 3);
 }
-
+// ----------------------------------------------------------
 const uint32_t i32_pow10[10] = {1000000000, 100000000, 10000000, 1000000, 100000, 10000, 1000, 100, 10, 1};
 /**
  * @brief simple itoa not using division or modulo
@@ -119,7 +125,18 @@ int i32toa(int32_t inVal, uint8_t *dstBf)
 	*p++ = '\0';
 	return (p - dstBf);
 }
+// ----------------------------------------------------------
+static inline uint32_t getRegBits(uint32_t reg, uint32_t mask);
+static inline uint32_t getRegBits(uint32_t reg, uint32_t mask)
+{
+	uint8_t i = 0;
+	while(!(mask & (1<<i))) i++;
+	return ((reg & mask)>>i);
+}
+// ----------------------------------------------------------
 
+
+// ----------------------------------------------------------
 #endif // UTILS_IMPLEMETATION
 
 #endif // _UTILS_H
