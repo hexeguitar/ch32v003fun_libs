@@ -138,7 +138,7 @@ void UART_init();			// baudrate set in funconf.h using FUNCONF_UART_PRINTF_BAUD
 #if defined (UART_MODE_RX)
 	#define UART_IT_RXC_ENABLE		(0x0020)
 	#define UART_IT_RXC_DISABLE		(0xFFDF)
-	uint8_t uart_rx_bf[UART_TX_BF_SIZE]; // transmit buffer	
+	uint8_t uart_rx_bf[UART_RX_BF_SIZE]; // receive buffer	
 	static volatile uint8_t uart_rxHead, uart_rxTail;
 	static volatile uint16_t lastRXerrorFlag = 0;
 	uint16_t UART_getc(void);
