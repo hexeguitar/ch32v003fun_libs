@@ -201,6 +201,19 @@ uint16_t UART_getc(void)
 // --------------------------------------------------------
 #if defined (UART_MODE_TX)
 /**
+ * @brief write function required by printf
+ * 
+ * @param fd file descriptor
+ * @param buf pointer to the source buffer
+ * @param size how many bytes to send
+ * @return int number of bytes sent
+ */
+int _write(int fd, const char *buf, int size)
+{
+	return UART_write(buf, size);
+}
+// --------------------------------------------------------
+/**
  * @brief put one byte into the transmit buffer, start TX
  * 
  * @param data byte to send
